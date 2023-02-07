@@ -1,60 +1,41 @@
-import dayjs from "dayjs";
-import { useEffect, useState } from "react";
-import ICalParser from "ical-js-parser";
+import useWeekData from "./composable/useWeekData";
 
-interface ICSData {
-  calendar: {};
-  events: Array<{
-    location: string;
-    description: string;
-    url: string;
-    dtstamp: {
-      timezone: string;
-      value: string;
-    };
-    dtstart: {
-      timezone: string;
-      value: string;
-    };
-  }>;
-}
-type WeekData = Array<{
-  content: Array<{
-    name: string;
-    liveURL: string;
-  }>;
-}>;
 const url = "https://nebula-beat.github.io/xld.ics";
 
 const App: React.FC = () => {
-  const [iscData, setIscData] = useState<ICSData>();
+  const weekData = useWeekData(url);
 
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.text())
-      .then((data) => {
-        const icsData = ICalParser.toJSON(data) as any as ICSData;
-        setIscData(icsData);
-      });
-  }, []);
-
-  const weekData: WeekData = Array.from({ length: 7 }, () => ({
-    content: [],
-  }));
-
-  iscData?.events.forEach((e) => {
-    const dtsart = dayjs(e.dtstart.value);
-    const dayOffset = dtsart.day() - 1;
-    const index = dayOffset === -1 ? 6 : dayOffset;
-
-    weekData[index].content.push({
-      name: e.location.split(" ")[0],
-      liveURL: e.description.split("\\n")[0],
-    });
-  });
-  console.log(weekData);
-
-  return <div></div>;
+  return (
+    <div className="flex mt-2 justify-center gap-x-1">
+      {weekData.map((d, i) => (
+        <div key={i} className="flex flex-col gap-y-2">
+          <div
+            className={`text-center font-bold ${
+              d.isToday ? "bg-blue-400" : ""
+            }`}
+          >
+            {d.weekDay}
+          </div>
+          {d.content.map((v, j) => (
+            <div
+              key={j}
+              className={`border p-2 ${v.dayStarted ? "bg-blue-300" : ""}`}
+            >
+              <div>{v.startTime}</div>
+              <a
+                href={v.liveURL}
+                target="_blank"
+                rel="noreferrer"
+                className="text-blue-600"
+              >
+                {v.name}
+              </a>
+            </div>
+          ))}
+        </div>
+      ))}
+    </div>
+  );
 };
 
 export default App;

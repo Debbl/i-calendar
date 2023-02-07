@@ -1,17 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import dayjs from "dayjs";
-import dayOfYear from "dayjs/plugin/dayOfYear";
 import weekday from "dayjs/plugin/weekday";
 import App from "./App";
-import "antd/dist/reset.css";
-import "normalize.css";
 import "./index.css";
+import "dayjs/locale/zh-cn";
 
-dayjs.extend(dayOfYear);
+dayjs.locale("zh-cn");
 dayjs.extend(weekday);
 
-ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
+const root = createRoot(document.getElementById("root") as HTMLElement);
+root.render(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
