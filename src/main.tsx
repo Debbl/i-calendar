@@ -5,6 +5,7 @@ import dayOfYear from "dayjs/plugin/dayOfYear";
 import App from "./App";
 import "antd/dist/reset.css";
 import "normalize.css";
+import "./index.css";
 
 dayjs.extend(dayOfYear);
 
