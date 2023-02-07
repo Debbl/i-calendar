@@ -51,6 +51,7 @@ const useWeekData = (url: string) => {
         const icsData = ICalParser.toJSON(data) as any as ICSData;
         setIscData(icsData);
       });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const weekData: WeekData = Array.from({ length: 7 }, (_, i) => ({
