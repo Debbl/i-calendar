@@ -3,11 +3,14 @@ import ICalParser from "ical-js-parser";
 import { useEffect, useState } from "react";
 
 interface ICSData {
-  calendar: {};
+  calendar: {
+    xWrCalname: string;
+  };
   events: Array<{
     location: string;
     description: string;
     url: string;
+    summary: string;
     dtstamp: {
       timezone: string;
       value: string;
@@ -21,12 +24,14 @@ interface ICSData {
 type WeekData = Array<{
   weekDay: string;
   isToday: boolean;
+  day: string;
   content: Array<{
     startTimeValue: number;
     startTime: string;
     dayStarted: boolean;
     name: string;
     liveURL: string;
+    summary: string;
   }>;
 }>;
 const WEEK_DAY = [
@@ -51,12 +56,13 @@ const useWeekData = (url: string) => {
         const icsData = ICalParser.toJSON(data) as any as ICSData;
         setIscData(icsData);
       });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const weekData: WeekData = Array.from({ length: 7 }, (_, i) => ({
     isToday: weekday === i,
     weekDay: WEEK_DAY[i],
+    day: "",
     content: [],
   }));
 
@@ -64,12 +70,14 @@ const useWeekData = (url: string) => {
     const dtsart = dayjs(e.dtstart.value);
     const index = dtsart.weekday();
 
+    weekData[index].day = dtsart.format("MM-DD");
     weekData[index].content.push({
       startTimeValue: dtsart.valueOf(),
       startTime: dtsart.format("HH:mm:ss"),
-      dayStarted: index === weekday && (timeValue > dtsart.valueOf()),
+      dayStarted: index === weekday && timeValue > dtsart.valueOf(),
       name: e.location.split(" ")[0],
       liveURL: e.description.split("\\n")[0],
+      summary: e.summary,
     });
   });
 
@@ -77,7 +85,9 @@ const useWeekData = (url: string) => {
     d.content.sort((a, b) => +a.startTimeValue - +b.startTimeValue);
   });
 
-  return weekData;
+  const calenderInfo = iscData?.calendar;
+
+  return { weekData, calenderInfo };
 };
 
 export default useWeekData;
