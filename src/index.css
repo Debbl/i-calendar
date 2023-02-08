@@ -9,7 +9,8 @@
     src: url("/fonts/JetBrainsMono-Medium.woff2") format("woff2"),
       url("/fonts/JetBrainsMonoNL-Medium.ttf") format("truetype");
   }
+  @import url('https://fonts.googleapis.com/css2?family=Recursive:wght,CASL,MONO@525,0.25,0.25&display=swap');
   html {
-    font-family: "JetBrainMono";
+    font-family: "Recursive", monospace, "JetBrainMono";
   }
 }

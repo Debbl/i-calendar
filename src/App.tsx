@@ -29,7 +29,7 @@ const App: React.FC = () => {
                   v.dayStarted ? "bg-blue-300" : ""
                 }`}
               >
-                <div className="bg-blue-200 text-center text-xs font-medium">
+                <div className="bg-blue-200 text-center text-xs font-semibold">
                   {v.startTime}
                 </div>
                 <div title={v.summary} className="truncate">
