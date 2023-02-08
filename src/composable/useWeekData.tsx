@@ -1,39 +1,8 @@
 import dayjs from "dayjs";
 import ICalParser from "ical-js-parser";
 import { useEffect, useState } from "react";
+import type { ICSData, WeekData } from "../types";
 
-interface ICSData {
-  calendar: {
-    xWrCalname: string;
-  };
-  events: Array<{
-    location: string;
-    description: string;
-    url: string;
-    summary: string;
-    dtstamp: {
-      timezone: string;
-      value: string;
-    };
-    dtstart: {
-      timezone: string;
-      value: string;
-    };
-  }>;
-}
-type WeekData = Array<{
-  weekDay: string;
-  isToday: boolean;
-  day: string;
-  content: Array<{
-    startTimeValue: number;
-    startTime: string;
-    dayStarted: boolean;
-    name: string;
-    liveURL: string;
-    summary: string;
-  }>;
-}>;
 const WEEK_DAY = [
   "星期一",
   "星期二",

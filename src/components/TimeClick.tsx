@@ -1,7 +1,7 @@
+/* eslint-disable react/prop-types */
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
-// eslint-disable-next-line react/prop-types
 const TimeClick: React.FC<{ className?: string; }> = ({ className }) => {
   const [time, setTime] = useState("");
   useEffect(() => {
