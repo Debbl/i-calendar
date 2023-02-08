@@ -17,7 +17,8 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@debbl/eslint-config-react": "^0.0.28",
+    "@debbl/eslint-config-prettier": "^0.0.30",
+    "@debbl/eslint-config-react": "^0.0.30",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
     "@vitejs/plugin-react-swc": "^3.0.0",

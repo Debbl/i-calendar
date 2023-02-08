@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import type { DayInfo } from "../types";
 import DayItem from "./DayItem";
 
-const WeekList: React.FC<{ d: DayInfo; }> = ({ d }) => {
+const WeekList: React.FC<{ d: DayInfo }> = ({ d }) => {
   return (
     <div className="flex flex-col gap-y-2">
       <div

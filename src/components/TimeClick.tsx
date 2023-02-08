@@ -1,8 +1,7 @@
-/* eslint-disable react/prop-types */
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
-const TimeClick: React.FC<{ className?: string; }> = ({ className }) => {
+const TimeClick: React.FC<{ className?: string }> = ({ className }) => {
   const [time, setTime] = useState("");
   useEffect(() => {
     const id = setInterval(() => {

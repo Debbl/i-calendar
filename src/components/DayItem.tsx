@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 import type { ItemInfo } from "../types";
 
-const DayItem: React.FC<{ v: ItemInfo; }> = ({ v }) => {
+const DayItem: React.FC<{ v: ItemInfo }> = ({ v }) => {
   return (
     <div className={`w-40 border p-2 ${v.dayStarted ? "bg-blue-300" : ""}`}>
-      <div className="bg-blue-200 text-center text-xs font-semibold">
+      <div className="bg-blue-200 text-center  text-xs font-semibold">
         {v.startTime}
       </div>
       <div title={v.summary} className="truncate">

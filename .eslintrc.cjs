@@ -1,3 +1,7 @@
 module.exports = {
-  extends: ["@debbl/eslint-config-react", "plugin:tailwindcss/recommended"],
+  extends: [
+    "plugin:tailwindcss/recommended",
+    "@debbl/eslint-config-react",
+    "@debbl/eslint-config-prettier",
+  ],
 };
