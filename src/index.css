@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  /* fonts */
+  @font-face {
+    font-family: "JetBrainMono";
+    src: url("/fonts/JetBrainsMono-Medium.woff2") format("woff2"),
+      url("/fonts/JetBrainsMonoNL-Medium.ttf") format("truetype");
+  }
+  html {
+    font-family: "JetBrainMono";
+  }
+}
