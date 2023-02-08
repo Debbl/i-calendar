@@ -11,7 +11,7 @@ const App: React.FC = () => {
       <span className="text-gray-500">{url}</span>
       <span>{calenderInfo?.xWrCalname}</span>
       <TimeClick className="fixed right-6 top-6 text-lg font-medium" />
-      <div className="flex mt-2 justify-center gap-x-1">
+      <div className="mt-2 flex justify-center gap-x-1">
         {weekData.map((d, i) => (
           <div key={i} className="flex flex-col gap-y-2">
             <div
@@ -25,11 +25,11 @@ const App: React.FC = () => {
             {d.content.map((v, j) => (
               <div
                 key={j}
-                className={`border p-2 w-40 ${
+                className={`w-40 border p-2 ${
                   v.dayStarted ? "bg-blue-300" : ""
                 }`}
               >
-                <div className="font-medium text-xs bg-blue-200 text-center">
+                <div className="bg-blue-200 text-center text-xs font-medium">
                   {v.startTime}
                 </div>
                 <div title={v.summary} className="truncate">
@@ -39,7 +39,7 @@ const App: React.FC = () => {
                   href={v.liveURL}
                   target="_blank"
                   rel="noreferrer"
-                  className="text-blue-700 text-sm"
+                  className="text-sm text-blue-700"
                 >
                   {v.name}
                 </a>
