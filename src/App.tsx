@@ -1,3 +1,4 @@
+import TimeClick from "./components/TimeClick";
 import useWeekData from "./composable/useWeekData";
 
 const url = "https://nebula-beat.github.io/xld.ics";
@@ -9,6 +10,7 @@ const App: React.FC = () => {
     <div className="flex flex-col items-center gap-y-1">
       <span className="text-gray-500">{url}</span>
       <span>{calenderInfo?.xWrCalname}</span>
+      <TimeClick className="fixed right-6 top-6 text-lg font-medium" />
       <div className="flex mt-2 justify-center gap-x-1">
         {weekData.map((d, i) => (
           <div key={i} className="flex flex-col gap-y-2">
