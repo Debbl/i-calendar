@@ -1,8 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@debbl/eslint-config-prettier': ^0.0.30
-  '@debbl/eslint-config-react': ^0.0.30
+  '@debbl/eslint-config-prettier': ^0.0.32
+  '@debbl/eslint-config-react': ^0.0.32
   '@types/react': ^18.0.27
   '@types/react-dom': ^18.0.10
   '@vitejs/plugin-react-swc': ^3.0.0
@@ -25,8 +25,8 @@ dependencies:
   react-dom: 18.2.0_react@18.2.0
 
 devDependencies:
-  '@debbl/eslint-config-prettier': 0.0.30_eslint@8.33.0
-  '@debbl/eslint-config-react': 0.0.30_4vsywjlpuriuw3tl5oq6zy5a64
+  '@debbl/eslint-config-prettier': 0.0.32_eslint@8.33.0
+  '@debbl/eslint-config-react': 0.0.32_4vsywjlpuriuw3tl5oq6zy5a64
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   '@vitejs/plugin-react-swc': 3.1.0_vite@4.1.1
@@ -61,8 +61,8 @@ packages:
       js-tokens: 4.0.0
     dev: true
 
-  /@debbl/eslint-config-basic/0.0.30_yzj2n2b43wonjwaifya6xmk2zy:
-    resolution: {integrity: sha512-qKt9KHikS5HzcW+RLHhdHkTLnyc3q+fRbBGnaSKz3gqUu9iTBTDY5P8w1lFMxLZWcnr+4CWGyVbi5RxW1sJSqQ==}
+  /@debbl/eslint-config-basic/0.0.32_yzj2n2b43wonjwaifya6xmk2zy:
+    resolution: {integrity: sha512-/J5RVMscqyIc309VxPFgAN0AOThQSRJIy19QPwrPkVnCYtcRyGrgbg3jIfKHWV8vYcYRYGhLf95xA3y/BSDfvA==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
@@ -86,8 +86,8 @@ packages:
       - supports-color
     dev: true
 
-  /@debbl/eslint-config-prettier/0.0.30_eslint@8.33.0:
-    resolution: {integrity: sha512-tdsYu3QtuhQkJSjFwZMRx1TMtyBtey7m+h6LtPwGM9jh4/wnEEKDIcLDtPnFAe95XxnxW6zf/e+gXqVv0lEDoA==}
+  /@debbl/eslint-config-prettier/0.0.32_eslint@8.33.0:
+    resolution: {integrity: sha512-eRFR6wSDf6yMIbnJB3VClkGolFjtzb0LETvWeDjouiNT52eES3JLdOWweRwEat7Wc2m2fUCxaD0cDuatYX2y+Q==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
@@ -97,12 +97,12 @@ packages:
       prettier: 2.8.4
     dev: true
 
-  /@debbl/eslint-config-react/0.0.30_4vsywjlpuriuw3tl5oq6zy5a64:
-    resolution: {integrity: sha512-rnoRrHLt1qJjyR4s3Hp1+ta2g54wXcofbM6iEd47k6kcTNHoJvY39/OBUK1HLnRrLj0tvN0jL/LZIDkp9J/6Gw==}
+  /@debbl/eslint-config-react/0.0.32_4vsywjlpuriuw3tl5oq6zy5a64:
+    resolution: {integrity: sha512-P9WDG+i/DGMTozlGFurt53jOfs9zbamffInI5aTVAUcmopKbp1Pj8WMOiBh7DZWNPuEyIgSl2KDpG0uyODDqGQ==}
     peerDependencies:
       eslint: '>=8.24.0'
     dependencies:
-      '@debbl/eslint-config-ts': 0.0.30_4vsywjlpuriuw3tl5oq6zy5a64
+      '@debbl/eslint-config-ts': 0.0.32_4vsywjlpuriuw3tl5oq6zy5a64
       eslint: 8.33.0
       eslint-plugin-react: 7.32.2_eslint@8.33.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.33.0
@@ -113,13 +113,13 @@ packages:
       - typescript
     dev: true
 
-  /@debbl/eslint-config-ts/0.0.30_4vsywjlpuriuw3tl5oq6zy5a64:
-    resolution: {integrity: sha512-0ffA2HqA5UP81C/+9oTVev0IDPB8G/T2Frp/9brmez8iQazQjvjXtzoaMi/nKHAmhja3iTWPKBgabpsnIM7JFQ==}
+  /@debbl/eslint-config-ts/0.0.32_4vsywjlpuriuw3tl5oq6zy5a64:
+    resolution: {integrity: sha512-3orxMUIg4BwQ4+tE5iosVwJ0QIslsQLyn/Br4Imi2q1Ejl7uVyO8DDv3sIPsY7SIGc8O8rsiE3tgbQnrBmlMOg==}
     peerDependencies:
       eslint: '>=8.24.0'
       typescript: '>=4.8.4'
     dependencies:
-      '@debbl/eslint-config-basic': 0.0.30_yzj2n2b43wonjwaifya6xmk2zy
+      '@debbl/eslint-config-basic': 0.0.32_yzj2n2b43wonjwaifya6xmk2zy
       '@typescript-eslint/eslint-plugin': 5.51.0_b635kmla6dsb4frxfihkw4m47e
       '@typescript-eslint/parser': 5.51.0_4vsywjlpuriuw3tl5oq6zy5a64
       eslint: 8.33.0
