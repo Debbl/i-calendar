@@ -1,7 +1,7 @@
-import dayjs from "dayjs";
 import ICalParser from "ical-js-parser";
 import { useEffect, useState } from "react";
 import type { ICSData, WeekData } from "../types";
+import { dateFormat, dateParseISO, getWeekDay } from "../utils/dateUtils";
 
 const WEEK_DAY = [
   "星期一",
@@ -12,11 +12,12 @@ const WEEK_DAY = [
   "星期六",
   "星期日",
 ];
-
 const useWeekData = (url: string) => {
   const [iscData, setIscData] = useState<ICSData>();
-  const weekday = dayjs().weekday();
-  const timeValue = dayjs().valueOf();
+  const date = new Date();
+
+  const weekday = getWeekDay(date);
+  const timeValue = date.valueOf();
 
   useEffect(() => {
     fetch(url)
@@ -36,14 +37,16 @@ const useWeekData = (url: string) => {
   }));
 
   iscData?.events.forEach((e) => {
-    const dtsart = dayjs(e.dtstart.value);
-    const index = dtsart.weekday();
+    const time = dateParseISO(e.dtstart.value);
+    const timeUnix = time.valueOf();
 
-    weekData[index].day = dtsart.format("MM-DD");
+    const index = getWeekDay(time);
+
+    weekData[index].day = dateFormat(time, "MM-dd");
     weekData[index].content.push({
-      startTimeValue: dtsart.valueOf(),
-      startTime: dtsart.format("HH:mm:ss"),
-      dayStarted: index === weekday && timeValue > dtsart.valueOf(),
+      startTimeValue: timeUnix,
+      startTime: dateFormat(time, "HH:mm:ss"),
+      dayStarted: index === weekday && timeValue > timeUnix,
       name: e.location.split(" ")[0],
       liveURL: e.description.split("\\n")[0],
       summary: e.summary,

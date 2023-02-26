@@ -1,11 +1,11 @@
-import dayjs from "dayjs";
 import { useEffect, useState } from "react";
+import { dateFormat } from "../utils/dateUtils";
 
 const TimeClick: React.FC<{ className?: string }> = ({ className }) => {
   const [time, setTime] = useState("");
   useEffect(() => {
     const id = setInterval(() => {
-      setTime(dayjs().format("HH:mm:ss"));
+      setTime(dateFormat(new Date(), "HH:mm:ss"));
     }, 1000);
     return () => {
       clearInterval(id);

@@ -7,7 +7,7 @@ specifiers:
   '@types/react-dom': ^18.0.10
   '@vitejs/plugin-react-swc': ^3.0.0
   autoprefixer: ^10.4.13
-  dayjs: ^1.11.7
+  date-fns: ^2.29.3
   eslint: ^8.33.0
   eslint-plugin-tailwindcss: ^3.8.3
   ical-js-parser: ^0.7.4
@@ -19,7 +19,7 @@ specifiers:
   vite: ^4.1.0
 
 dependencies:
-  dayjs: 1.11.7
+  date-fns: 2.29.3
   ical-js-parser: 0.7.4
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -990,6 +990,11 @@ packages:
     resolution: {integrity: sha512-DJR/VvkAvSZW9bTouZue2sSxDwdTN92uHjqeKVm+0dAqdfNykRzQ95tay8aXMBAAPpUiq4Qcug2L7neoRh2Egw==}
     dev: true
 
+  /date-fns/2.29.3:
+    resolution: {integrity: sha512-dDCnyH2WnnKusqvZZ6+jA1O51Ibt8ZMRNkDZdyAyK4YfbDwa/cEmuztzG5pk6hqlp9aSBPYcjOlktquahGwGeA==}
+    engines: {node: '>=0.11'}
+    dev: false
+
   /datez/0.0.7_luxon@3.1.1:
     resolution: {integrity: sha512-r6Nr29nROX54OzZ8oosRSXzqRR2xpPIu8tdRsWnBitj7QYKpwUZz33h6q0zf64KDfopBozrmNbx/TsMLGCM4cg==}
     peerDependencies:
@@ -997,10 +1002,6 @@ packages:
     dependencies:
       luxon: 3.1.1
       timezone-soft: 1.4.1
-    dev: false
-
-  /dayjs/1.11.7:
-    resolution: {integrity: sha512-+Yw9U6YO5TQohxLcIkrXBeY73WP3ejHWVvx8XCk3gxvQDCTEmS48ZrSZCKciI7Bhl/uCMyxYtE9UqRILmFphkQ==}
     dev: false
 
   /debug/3.2.7:
