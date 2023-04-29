@@ -1,7 +1,7 @@
 import Footer from "./components/Footer";
 import TimeClick from "./components/TimeClick";
 import WeekList from "./components/WeekList";
-import useWeekData from "./composable/useWeekData";
+import useWeekData from "./hooks/useWeekData";
 
 const url = "https://nebula-beat.github.io/xld.ics";
 
