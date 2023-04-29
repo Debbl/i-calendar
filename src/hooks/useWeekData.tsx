@@ -1,5 +1,5 @@
 import ICalParser from "ical-js-parser";
-import { useEffect, useState } from "react";
+import useSWR from "swr";
 import type { ICSData, WeekData } from "../types";
 import { dateFormat, dateParseISO, getWeekDay } from "../utils/dateUtils";
 
@@ -12,22 +12,24 @@ const WEEK_DAY = [
   "星期六",
   "星期日",
 ];
+
 const useWeekData = (url: string) => {
-  const [iscData, setIscData] = useState<ICSData>();
+  const { data: iscData, isLoading } = useSWR(
+    url,
+    async () => {
+      const response = await fetch(url);
+      const data = await response.text();
+      return ICalParser.toJSON(data) as any as ICSData;
+    },
+    {
+      refreshInterval: 1000 * 60 * 10,
+    }
+  );
+
   const date = new Date();
 
   const weekday = getWeekDay(date);
   const timeValue = date.valueOf();
-
-  useEffect(() => {
-    fetch(url)
-      .then((res) => res.text())
-      .then((data) => {
-        const icsData = ICalParser.toJSON(data) as any as ICSData;
-        setIscData(icsData);
-      });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const weekData: WeekData = Array.from({ length: 7 }, (_, i) => ({
     isToday: weekday === i,
@@ -59,7 +61,7 @@ const useWeekData = (url: string) => {
 
   const calenderInfo = iscData?.calendar;
 
-  return { weekData, calenderInfo };
+  return { weekData, calenderInfo, isLoading };
 };
 
 export default useWeekData;
