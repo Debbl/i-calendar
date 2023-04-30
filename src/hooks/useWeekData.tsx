@@ -1,5 +1,6 @@
 import ICalParser from "ical-js-parser";
 import useSWR from "swr";
+import { useEffect, useRef } from "react";
 import type { ICSData, WeekData } from "../types";
 import { dateFormat, dateParseISO, getWeekDay } from "../utils/dateUtils";
 
@@ -14,17 +15,16 @@ const WEEK_DAY = [
 ];
 
 const useWeekData = (url: string) => {
-  const { data: iscData, isLoading } = useSWR(
-    url,
-    async () => {
-      const response = await fetch(url);
-      const data = await response.text();
-      return ICalParser.toJSON(data) as any as ICSData;
-    },
-    {
-      refreshInterval: 1000 * 60 * 10,
-    }
-  );
+  const refreshInterval = useRef(Infinity);
+  const {
+    data: iscData,
+    isLoading,
+    mutate,
+  } = useSWR(url, async () => {
+    const response = await fetch(url);
+    const data = await response.text();
+    return ICalParser.toJSON(data) as any as ICSData;
+  });
 
   const date = new Date();
 
@@ -53,11 +53,25 @@ const useWeekData = (url: string) => {
       liveURL: e.description.split("\\n")[0],
       summary: e.summary,
     });
+    if (index === weekday && timeUnix - timeValue > 0) {
+      const interval = timeUnix - timeValue;
+      if (interval < refreshInterval.current) {
+        refreshInterval.current = interval;
+      }
+    }
   });
 
   weekData.forEach((d) => {
     d.content.sort((a, b) => +a.startTimeValue - +b.startTimeValue);
   });
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      mutate();
+    }, refreshInterval.current);
+
+    return () => clearTimeout(id);
+  }, [iscData, mutate]);
 
   const calenderInfo = iscData?.calendar;
 
