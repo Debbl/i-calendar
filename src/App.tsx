@@ -10,6 +10,9 @@ const App: React.FC = () => {
 
   return (
     <div>
+      {/* add mask */}
+      <div className="fixed z-10 h-screen w-screen bg-gray-300/90"></div>
+
       <TimeClick className="fixed right-6 top-6 text-lg font-medium" />
       <div className="text-center text-gray-500">{BASE_URL}</div>
 
